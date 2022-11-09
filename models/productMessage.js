@@ -6,7 +6,8 @@ const productSchema = mongoose.Schema({
 
     id: {type: String, value: uuidv4()},
     Name: {type: String, maxLength: 100, required: true},
-    Price: {type: Number, required: true},
+    Price: {type: Number, required: true, get: v => v.toFixed(2),
+    set: v => v.toFixed(2)}
 },
 {
     timestamps: {
